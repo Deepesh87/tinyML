@@ -3,7 +3,10 @@ import tensorflow as tf
 
 # define a neural network with one neuron
 # for more information on TF functions see: https://www.tensorflow.org/api_docs
-model = tf.keras.Sequential([tf.keras.layers.Dense(units=1, input_shape=[1])])
+
+my_layer = tf.keras.layers.Dense(units=1, input_shape=[1])
+
+model = tf.keras.Sequential([my_layer])
 
 # use stochastic gradient descent for optimization and
 # the mean squared error loss function
@@ -17,3 +20,4 @@ ys = np.array([-3.0, -1.0, 1.0, 3.0, 5.0, 7.0], dtype=float)
 model.fit(xs, ys, epochs=500)
 
 print(model.predict(np.array([10.0])))
+print(my_layer.get_weights())
