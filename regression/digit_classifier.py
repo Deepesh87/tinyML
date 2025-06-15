@@ -22,7 +22,7 @@ model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-model.fit(training_images, training_labels, epochs=20)
+model.fit(training_images, training_labels, validation_data=(val_images, val_labels) ,epochs=20) #adding val so we see train and val performance in each epoch
 model.evaluate(val_images, val_labels)
 
 classifications = model.predict(val_images)
