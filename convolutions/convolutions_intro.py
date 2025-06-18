@@ -39,8 +39,10 @@ filter = [ [-1, -2, -1], [0, 0, 0], [1, 2, 1]]
 # They add up to 10, so you would set a weight of .1 if you want to normalize them
 weight  = 1
 
-# let's create a convolution. We will iterate over the image, leaving a 1 pixel margin, and multiply out each of the neighbors of the current pixel by the value defined in the filter.
-# i.e. the current pixel's neighbor above it and to the left will be multiplied by the top left item in the filter etc. etc. We'll then multiply the result by the weight, and then ensure the result is in the range 0-255
+# let's create a convolution. We will iterate over the image, leaving a 1 pixel margin, and multiply out each of the neighbors of the current pixel 
+# by the value defined in the filter.
+# i.e. the current pixel's neighbor above it and to the left will be multiplied by the top left item in the filter etc. etc.
+#  We'll then multiply the result by the weight, and then ensure the result is in the range 0-255
 # Finally we'll load the new value into the transformed image.
 
 for x in range(1,size_x-1):
@@ -84,23 +86,28 @@ newImage = np.zeros((new_x, new_y))
 for x in range(0, size_x, 4):
   for y in range(0, size_y, 4):
     pixels = []
+    #row 0
     pixels.append(i_transformed[x, y])
     pixels.append(i_transformed[x+1, y])
     pixels.append(i_transformed[x+2, y])
     pixels.append(i_transformed[x+3, y])
+    #row 1
     pixels.append(i_transformed[x, y+1])
     pixels.append(i_transformed[x+1, y+1])
     pixels.append(i_transformed[x+2, y+1])
     pixels.append(i_transformed[x+3, y+1])
+    #row 2
     pixels.append(i_transformed[x, y+2])
     pixels.append(i_transformed[x+1, y+2])
     pixels.append(i_transformed[x+2, y+2])
     pixels.append(i_transformed[x+3, y+2])
+    #row 3
     pixels.append(i_transformed[x, y+3])
     pixels.append(i_transformed[x+1, y+3])
     pixels.append(i_transformed[x+2, y+3])
     pixels.append(i_transformed[x+3, y+3])
-    pixels.sort(reverse=True)
+    pixels.sort(reverse=True) #sort in descending order
+    #take the first pixel, which is the largest
     newImage[int(x/4),int(y/4)] = pixels[0]
 
 # Plot the image. Note the size of the axes -- now 128 pixels instead of 512
