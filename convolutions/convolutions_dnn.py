@@ -56,4 +56,4 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 model.summary()
 model.fit(training_images, training_labels, validation_data=(val_images, val_labels), epochs=100) 
 # accuracy has gone up to 96% on training and 90% on validation with 20 epochs
-# with epoch of 100 it overfits to 99% on training and 91% on validation
+# with epoch of 100 it overfits to 99% on training and 90% on validation
