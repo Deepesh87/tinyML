@@ -12,7 +12,7 @@ model = tf.keras.Sequential([my_layer_1, my_layer_2])
 
 model.compile(optimizer='sgd', loss='mean_squared_error')
 
- 
+
 
 xs = np.array([-1.0,  0.0, 1.0, 2.0, 3.0, 4.0], dtype=float)
 
