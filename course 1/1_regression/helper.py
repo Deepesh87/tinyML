@@ -101,6 +101,8 @@ my_layer = tf.keras.layers.Dense(units=1, input_shape=[1])
 # units=1 means it has one neuron So it learns 1 weight and 1 bias.
 # Formula for one neuron: y=w⋅x+b
 
+# input_shape=[1] means it expects input data to have one feature
+
 # if you want say 2 hidden layers with 3 and 4 neurons respectively, you can do:
 test_layer = [
     tf.keras.layers.Dense(units=3, input_shape=[1], activation='relu'),  # first hidden layer with 3 neurons
@@ -110,7 +112,7 @@ test_layer = [
 # Regression → no activation on last layer. Classification → activation='softmax' or sigmoid
 
 
-# input_shape=[1] means it expects input data to have one feature
+
 model = tf.keras.Sequential([my_layer])
 model.compile(optimizer='sgd', loss='mean_squared_error') #stocastic gradient descent
 
