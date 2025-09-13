@@ -1,4 +1,4 @@
-# First import the functions we will need
+# Use the helper./py file to understand the functions
 import sys
 import numpy as np
 import tensorflow as tf
@@ -6,15 +6,35 @@ import matplotlib.pyplot as plt
 # Check TensorFlow version
 print("TensorFlow version:", tf.__version__)
 
-# https://www.tensorflow.org/api_docs/python/tf/GradientTape
+xs = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0]
+ys = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0]
+# above x and y are given. Find the function that best fits the data.
+# We will use the equation of a line: y = wx + b
+#start with the assumption of a W and B
+# we will calculate the root mean square error (RMSE) to see how well our assumption fits the data
 
 # Define our initial guess
 INITIAL_W = 10.0
 INITIAL_B = 10.0
+LEARNING_RATE=0.09
 
 # Define our loss function
 def loss(predicted_y, target_y):
+  """
+  implements the Mean Squared Error (MSE) loss function
+  """
   return tf.reduce_mean(tf.square(predicted_y - target_y))
+
+# Define our simple linear regression model
+class Model(object):
+  def __init__(self):
+    # Initialize the weights
+    self.w = tf.Variable(INITIAL_W)
+    self.b = tf.Variable(INITIAL_B)
+
+  def __call__(self, x):
+    return self.w * x + self.b 
+  
 
 # Define our training procedure
 def train(model, inputs, outputs, learning_rate):
@@ -27,21 +47,8 @@ def train(model, inputs, outputs, learning_rate):
     model.b.assign_sub(learning_rate * db)
     return current_loss
 
-# Define our simple linear regression model
-class Model(object):
-  def __init__(self):
-    # Initialize the weights
-    self.w = tf.Variable(INITIAL_W)
-    self.b = tf.Variable(INITIAL_B)
 
-  def __call__(self, x):
-    return self.w * x + self.b
   
-# Define our input data and learning rate
-xs = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0]
-ys = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0]
-LEARNING_RATE=0.09
-
 # Instantiate our model
 model = Model()
 
@@ -69,4 +76,5 @@ plt.legend(['w', 'b', 'True w', 'True b'])
 plt.savefig('linear_regression_plot.png')
 
 
-
+# Read more here
+# https://www.tensorflow.org/api_docs/python/tf/GradientTape
