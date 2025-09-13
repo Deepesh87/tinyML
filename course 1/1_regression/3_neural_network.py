@@ -4,7 +4,7 @@ import tensorflow as tf
 # define a neural network with one neuron
 # for more information on TF functions see: https://www.tensorflow.org/api_docs
 
-my_layer = tf.keras.layers.Dense(units=1, input_shape=[1])
+my_layer = tf.keras.layers.Dense(units=1, input_shape=[1]) 
 
 model = tf.keras.Sequential([my_layer])
 

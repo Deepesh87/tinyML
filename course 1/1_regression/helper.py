@@ -93,3 +93,31 @@ for epoch in range(50):
 # w1 = 10-0.09 * d(loss)/dw = -0.41
 # b1 = 10-0.09 * d(loss)/db = 5.86
 
+# 4 ====Neural Network Introduction========================
+print("Helper section 4: Neural Network Introduction")
+
+my_layer = tf.keras.layers.Dense(units=1, input_shape=[1]) 
+# A Dense layer (also called a fully connected layer)
+# units=1 means it has one neuron So it learns 1 weight and 1 bias.
+# Formula for one neuron: y=w⋅x+b
+
+# if you want say 2 hidden layers with 3 and 4 neurons respectively, you can do:
+test_layer = [
+    tf.keras.layers.Dense(units=3, input_shape=[1], activation='relu'),  # first hidden layer with 3 neurons
+    tf.keras.layers.Dense(units=4, activation='relu'),   # second hidden layer with 4 neurons. It automatically takes the output of the previous layer as input.
+    tf.keras.layers.Dense(units=1)   #explicit output layer with 1 neuron. No activation → gives a linear output y=w⋅x+b
+]                                                                  
+# Regression → no activation on last layer. Classification → activation='softmax' or sigmoid
+
+
+# input_shape=[1] means it expects input data to have one feature
+model = tf.keras.Sequential([my_layer])
+model.compile(optimizer='sgd', loss='mean_squared_error') #stocastic gradient descent
+
+xs = np.array([-1.0,  0.0, 1.0, 2.0, 3.0, 4.0], dtype=float)
+ys = np.array([-3.0, -1.0, 1.0, 3.0, 5.0, 7.0], dtype=float)
+model.fit(xs, ys, epochs=500)
+print(model.predict(np.array([10.0])))
+print(my_layer.get_weights())
+#print the mean squared error loss function value
+print(model.evaluate(xs, ys, verbose=0))
