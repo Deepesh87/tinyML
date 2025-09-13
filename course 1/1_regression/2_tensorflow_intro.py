@@ -1,6 +1,4 @@
 # Use the helper./py file to understand the functions
-import sys
-import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
 # Check TensorFlow version
@@ -46,7 +44,6 @@ def train(model, inputs, outputs, learning_rate):
     model.w.assign_sub(learning_rate * dw)
     model.b.assign_sub(learning_rate * db)
     return current_loss
-
 
   
 # Instantiate our model
