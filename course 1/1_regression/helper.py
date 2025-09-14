@@ -101,7 +101,7 @@ my_layer = tf.keras.layers.Dense(units=1, input_shape=[1])
 # units=1 means it has one neuron So it learns 1 weight and 1 bias.
 # Formula for one neuron: y=w⋅x+b
 
-# input_shape=[1] means it expects input data to have one feature
+# input_shape=[1] means it expects input data to have one feature. Only needed in the first layer.
 
 # if you want say 2 hidden layers with 3 and 4 neurons respectively, you can do:
 test_layer = [
@@ -121,5 +121,7 @@ ys = np.array([-3.0, -1.0, 1.0, 3.0, 5.0, 7.0], dtype=float)
 model.fit(xs, ys, epochs=500)
 print(model.predict(np.array([10.0])))
 print(my_layer.get_weights())
+# Weight and bias of the only neuron in the layer
+
 #print the mean squared error loss function value
 print(model.evaluate(xs, ys, verbose=0))
