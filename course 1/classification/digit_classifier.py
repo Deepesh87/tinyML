@@ -1,7 +1,6 @@
 import tensorflow as tf
-import sys
 
-data = tf.keras.datasets.mnist
+data = tf.keras.datasets.mnist # has 60k training images and 10k validation images of handwritten digits (0-9)
 
 (training_images, training_labels), (val_images, val_labels) = data.load_data()
 

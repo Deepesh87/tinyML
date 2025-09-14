@@ -1,6 +1,4 @@
 import numpy as np 
-import pandas as pd
-import math
 
 class testing():
     def __init__(self, a, b):
