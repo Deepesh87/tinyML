@@ -8,11 +8,19 @@ data = tf.keras.datasets.mnist
 training_images = training_images / 255.0
 val_images = val_images / 255.0
 
-#reLU means Rectified Linear Unit, a common activation function in neural networks
+
 # softmax is used in the output layer for multi-class classification problems
+flatten_layer = tf.keras.layers.Flatten(input_shape=(28,28)) 
+# Flatten the 28x28(=784) images to a 1D array so the model can process them
+
 layer_1 = tf.keras.layers.Dense(20, activation=tf.nn.relu) # Hidden layer with 20 neurons and ReLU activation
-layer_2 = tf.keras.layers.Dense(10, activation=tf.nn.softmax) # Output layer with 10 neurons for each digit (0-9)
-model = tf.keras.models.Sequential([tf.keras.layers.Flatten(input_shape=(28,28)), # Flatten the 28x28(=784) images to a 1D array so the model can process them
+# Each of the 784 input features connects to each of the 20 neurons.
+
+layer_2 = tf.keras.layers.Dense(10, activation=tf.nn.softmax) 
+# Output layer with 10 neurons for each digit (0-9)
+
+
+model = tf.keras.models.Sequential([flatten_layer, 
                                     layer_1,
                                     layer_2])
 
@@ -38,12 +46,6 @@ print(layer_1.get_weights()[1].size) # size of the biases array is 20 (one bias 
 print(layer_2.get_weights()) # an array of weights and biases, number of weights is 10x20=200 (10 neurons in the output layer, each with 20 inputs from the first layer)
 print(layer_2.get_weights()[0].size) # size of the weights array is 200
 print(layer_2.get_weights()[1].size) #size of the biases array is 10 (one bias for each neuron in the second layer)
-
-
-
-
-
-
 
 
 
