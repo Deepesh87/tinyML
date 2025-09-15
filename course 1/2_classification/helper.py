@@ -39,7 +39,8 @@ print(training_labels[0]) # print the label of the first image (5)
 
 # Metrics are for monitoring performance (not directly used in training).
 
-# 3 ====                   ========================
+
+# 3 ====  Model loss function and metrics ====================
 
 
 

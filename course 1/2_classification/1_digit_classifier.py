@@ -30,11 +30,18 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 model.fit(training_images, training_labels, validation_data=(val_images, val_labels) ,epochs=20) #adding val so we see train and val performance in each epoch
-model.evaluate(val_images, val_labels)
+
+# Evaluate model on validation set
+loss, accuracy = model.evaluate(val_images, val_labels, verbose=0)
+
+print(f"Final Validation Loss: {loss:.4f}")
+print(f"Final Validation Accuracy: {accuracy * 100:.2f}%")
 
 classifications = model.predict(val_images)
-print(classifications[0])
-print(val_labels[0])
+# has the shape (10000, 10) for each of the 10k validation images, the model outputs an array of 10 probabilities (one for each digit 0-9)
+
+print(classifications[0]) # print the array of 10 probabilities for the first validation image
+print(val_labels[0]) # print the true label of the first validation image
 
 #inspect the weights of the first layer
 print(layer_1.get_weights()) # an array of weights and biases, number of weights is 20x784= 15680 (20 neurons, each with 784 inputs from the flattened image)
