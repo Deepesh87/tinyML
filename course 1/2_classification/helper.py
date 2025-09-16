@@ -38,10 +38,3 @@ print(training_labels[0]) # print the label of the first image (5)
 # That’s why sparse_categorical_crossentropy is easier with datasets like MNIST, where labels are just numbers. 
 
 # Metrics are for monitoring performance (not directly used in training).
-
-
-# 3 ====  Model loss function and metrics ====================
-
-
-
-# 4 ====                   ========================

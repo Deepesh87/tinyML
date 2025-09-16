@@ -40,19 +40,19 @@ print(f"Final Validation Accuracy: {accuracy * 100:.2f}%")
 classifications = model.predict(val_images)
 # has the shape (10000, 10) for each of the 10k validation images, the model outputs an array of 10 probabilities (one for each digit 0-9)
 
-print(classifications[0]) # print the array of 10 probabilities for the first validation image
-print(val_labels[0]) # print the true label of the first validation image
+print(f"predictions of the first record in validation dataset {classifications[0]}") # print the array of 10 probabilities for the first validation image
+print(f"label of the first record in Val dataset {val_labels[0]}") # print the true label of the first validation image
 
 #inspect the weights of the first layer
-print(layer_1.get_weights()) # an array of weights and biases, number of weights is 20x784= 15680 (20 neurons, each with 784 inputs from the flattened image)
-print(layer_1.get_weights()[0].size) # size of the weights array is 15680
-print(layer_1.get_weights()[1].size) # size of the biases array is 20 (one bias for each neuron in the first layer)
+print(f" See all weights and biases of layer 1: {layer_1.get_weights()}") # an array of weights and biases, number of weights is 20x784= 15680 (20 neurons, each with 784 inputs from the flattened image)
+print(f" See all weights of layer 1: {layer_1.get_weights()[0].size}") # size of the weights array is 15680
+print(f" See all biases of layer 1: {layer_1.get_weights()[1].size}") # size of the biases array is 20 (one bias for each neuron in the first layer)
 
 
 #inspect the weights of the second layer
-print(layer_2.get_weights()) # an array of weights and biases, number of weights is 10x20=200 (10 neurons in the output layer, each with 20 inputs from the first layer)
-print(layer_2.get_weights()[0].size) # size of the weights array is 200
-print(layer_2.get_weights()[1].size) #size of the biases array is 10 (one bias for each neuron in the second layer)
+print(f" See all weights and biases of layer 2: {layer_2.get_weights()}") # an array of weights and biases, number of weights is 10x20=200 (10 neurons in the output layer, each with 20 inputs from the first layer)
+print(f" See all weights of layer 2: {layer_2.get_weights()[0].size}") # size of the weights array is 200
+print(f" See all biases of layer 2: {layer_2.get_weights()[1].size}") #size of the biases array is 10 (one bias for each neuron in the second layer)
 
 
 
