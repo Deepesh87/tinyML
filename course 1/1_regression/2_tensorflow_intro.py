@@ -8,7 +8,7 @@ xs = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0]
 ys = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0]
 # above x and y are given. Find the function that best fits the data.
 # We will use the equation of a line: y = wx + b
-#start with the assumption of a W and B
+# start with the assumption of a W and B
 # we will calculate the root mean square error (RMSE) to see how well our assumption fits the data
 
 # Define our initial guess
